@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Business.Models
 {
-    internal class GenreModel
+    public class GenreModel
     {
+        public string Name { get; set; }
     }
 }
