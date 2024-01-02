@@ -12,8 +12,23 @@ namespace Business.Services
     {
         IQueryable<DirectorModel> Query();
     }
-    public class DirectorService
+    public class DirectorService : IDirectorService
     {
-        private readonly Db db;
+        private readonly Db _db;
+
+        public DirectorService(Db db) {
+            _db = db ?? throw new ArgumentNullException(nameof(db));
+        }
+
+        public IQueryable<DirectorModel> Query()
+        {
+            return _db.Directors.OrderBy(a => a.BirthDate).Select(a => new DirectorModel()
+            {
+                Name = a.Name,
+                Surname = a.Surname,
+                BirthDate = a.BirthDate,
+                IsRetired = a.IsRetired
+            });
+        }
     }
 }

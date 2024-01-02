@@ -13,8 +13,22 @@ namespace Business.Services
     {
         IQueryable<MovieGenreModel> Query();  
     }
-    public class MovieGenreService
+    public class MovieGenreService : IMovieGenreService
     {
-        private readonly Db db;
+        private readonly Db _db;
+
+        public MovieGenreService(Db db) {
+            _db = db ?? throw new ArgumentNullException(nameof(db));
+
+        }
+
+        public IQueryable<MovieGenreModel> Query()
+        {
+            return _db.MovieGenres.OrderBy(a => a.GenreId).ThenBy(a => a.MovieId).Select(a => new MovieGenreModel()
+            {
+                MovieId = a.MovieId,
+                GenreId = a.GenreId,
+            });
+        }
     }
 }

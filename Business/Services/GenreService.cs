@@ -14,8 +14,21 @@ namespace Business.Services
     {
         IQueryable<GenreModel> Query();
     }
-    public class GenreService
+    public class GenreService : IGenreService
     {
-        private readonly Db db;
+        private readonly Db _db;
+
+        public GenreService(Db db)
+        {
+            _db = db ?? throw new ArgumentNullException(nameof(db));
+        }
+
+        public IQueryable<GenreModel> Query()
+        {
+            return _db.Genres.Select(a => new GenreModel()
+            {
+                Name = a.Name
+            });
+        }
     }
 }
