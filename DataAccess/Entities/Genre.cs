@@ -11,6 +11,7 @@ namespace DataAccess.Entities
     public class Genre : Record
     {
         [StringLength(75)]
+        [Key]
         public string Name { get; set; } // Assume max length validation is handled elsewhere
         public ICollection<MovieGenre> MovieGenres { get; set; } // Navigation property
 

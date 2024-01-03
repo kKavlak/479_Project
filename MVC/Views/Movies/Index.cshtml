@@ -1,0 +1,65 @@
+﻿@using Business.Models
+@model IEnumerable<MovieModel>
+@*Generated from Custom Template.*@
+@*Model namespace using directive should be added to _ViewImports.cshtml.*@
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Revenue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DirectorId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MovieId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+		@foreach (var item in Model) {
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.Name)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Year)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Revenue)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.DirectorId)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.MovieId)
+					</td>
+					<td>
+						<a asp-action="Details" asp-route-id="@item.MovieId">Details</a>&nbsp;|&nbsp;
+						<a asp-action="Edit" asp-route-id="@item.MovieId">Edit</a>&nbsp;|&nbsp;
+						<a asp-action="Delete" asp-route-id="@item.MovieId">Delete</a>
+					</td>
+				</tr>
+		}
+    </tbody>
+</table>
+
+
+

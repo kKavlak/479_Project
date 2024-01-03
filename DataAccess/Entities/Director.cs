@@ -17,6 +17,8 @@ namespace DataAccess.Entities
         public DateTime? BirthDate { get; set; }
         public bool IsRetired { get; set; }
         public ICollection<Movie> Movies { get; set; }
+        [Key]
+        public int Id { get; set; }
 
         public Director()
         {

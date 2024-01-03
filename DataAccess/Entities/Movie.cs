@@ -18,6 +18,8 @@ namespace DataAccess.Entities
         public int? DirectorId { get; set; }
         public Director Director { get; set; }
         public ICollection<MovieGenre> MovieGenres { get; set; }
+        [Key]
+        public int MovieId { get; set; }
 
         public Movie()
         {
